@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://wwww.thymeleaf.org" 
+      xmlns:sec="http://thymeleaft.org/extras/spring-security">
+    <head th:fragment="head">
+        <title>BookGeekShop</title>
+        <meta charset="UTF-8"/>
+        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+        <link href="/css/estilos.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <header th:fragment="header">
+            <nav class="nav">
+                <a th:href="@{/}" class="nav_a">BookGeekShop</a>
+                <form role="search" class="nav_form">
+
+                        <button type="submit"><a href="@{/perfil}"></a>Perfil</button>
+                        <button type="submit">Carrito</button>
+                        <a class="nav-menu-link nav-link" th:href="@{/login}">
+                            <i class='fas fa-sign-in-alt'></i>
+                        </a>
+                </form>
+            </nav>
+        </header>
+        <aside th:fragment="aside" class="lateral">
+            <button type="submit"><a th:href="@{/cliente/listado_cliente}" sec:authorize="hasRole('ROLE_ADMIN') OR hasRole('ROLE_VENDEDOR')">Clientes</a></button>
+            <button type="submit"><a th:href="@{/empleado/listado_empleado}" sec:authorize="hasRole('ROLE_ADMIN') OR hasRole('ROLE_VENDEDOR')">Empleados</a></button>
+            <button type="submit"><a th:href="@{/libro/listado_libro}" sec:authorize="hasRole('ROLE_ADMIN') OR hasRole('ROLE_VENDEDOR')">Libros</a></button>
+            <button type="submit"><a th:href="@{/novelaGrafica/listado_novelaGrafica}" sec:authorize="hasRole('ROLE_ADMIN') OR hasRole('ROLE_VENDEDOR')">Novelas Graficas</a></button>
+            <button type="submit"><a th:href="@{/ventaLibro/listado_ventaLibro}" sec:authorize="hasRole('ROLE_ADMIN') OR hasRole('ROLE_VENDEDOR')"> Ventas de Libros</a></button>
+            <button type="submit"><a th:href="@{/ventaNovelaGrafica/listado_ventaNovelaGrafica}" sec:authorize="hasRole('ROLE_ADMIN') OR hasRole('ROLE_VENDEDOR')">Ventas de Novelas Graficas</a></button>
+            <label>Catalogos</label>
+            <br>
+                <button type="submit" style="text-align: center"><a th:href="@{/catalogo/CatalogoLibros}">Libros</a></button>
+                <button type="submit"><a th:href="@{/catalogo/CatalogoNovelasGraficas}">Novelas Graficas</a></button>
+                <hr>
+                    <button type="submit"><a th:href="@{/sobreNosotros/sobre_nosotros}">Sobre Nosotros</a></button>
+                    <button type="submit"><a th:href="@{/contacto/contacto}">Contacto</a></button>
+                    </aside>
+                    <footer th:fragment="footer" class="bg-light text-center">
+                        &COPY;Derechos Reservados 2023
+                    </footer>
+                    </body>
+                    </html>
